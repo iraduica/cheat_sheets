@@ -1,0 +1,73 @@
+# list all commits that change a particular file
+	git log --follow --
+#rebase a feature branch on top of main
+		git checkout feature
+		git rebase main
+	#or (tested checked out on another baranch tham main)
+		git rebase main featire
+#change the date of the last commit
+	git commit --amend --reset-author
+#delete a local branch
+	git branch -d <branch_name>
+#delete a remote branch
+	git push -d origin <branch_name>
+#delete a commit (replace 'pick' with 'drop')
+	git rebase -i HEAD~3
+#abord an unfinished rebase
+	git rebase --abord
+# edit a specific commit(by default rebase does not include merge commits)
+	git rebase --interactive --preserve-merges <commit_hash>~
+#to force push the local changes remote !!!potentialy dangerous
+	git push origin HEAD --force
+#show the last commited changes
+	git diff HEAD^ HEAD
+#same as the previpus command but for a specific file
+	git diff HEAD^ HEAD -- file.txt
+#rewrite the last commit
+	git commit --amend
+#show uncommited changes
+	git diff --cached
+#show a graphical representation of git branches evolution over time
+	git log --graph
+#stash untracked changes
+	git stash --include-untracked
+#list who created a branch
+	git for-each-ref --format='%(committerdate) %09 %(authorname) %09 %(refname)' | sort
+#prevent auto CRLF 
+	git config --global core.autocrlf true
+#disable file permissions
+	git config core.fileMode false
+#show who changed a specific line
+	git blame  -L 33,33  <file_name> --ignore-rev <commit_to_be_ignored>
+#list all the comits with a specific word in the commit message
+	git log --grep=<word>
+#list all the commits with a specific word inside any file
+	git grep '<word>' $(git rev-list --all) [filename]
+#list the files changed by the last 10 commits
+	git log --name-status -10 <dir>
+#how to export changes of the last commit in a diff file
+	git diff <commit-before-commit1> <commit1> > commit1.diff
+#how to import a diff file
+	git apply file.diff
+#pull all branches from the remote
+	git pull --all
+#recoved a deleted stash(source: https://stackoverflow.com/questions/89332/how-do-i-recover-a-dropped-stash-in-git)
+	git branch tmp <hash of the stash>
+#apply the previously recoverded stash to the curtent branch
+	git stash apply tmp
+#rename a stash
+	git stash store -m "your descriptive message here" stash@{1}
+	git drop stash@{<id_of_the_previous_stash>}
+# search for a commit that removed a string
+	git log -c -S'missingtext' /path/to/file
+# move branch tip
+	git branch --force <branch-name> [<new-tip-commit>]
+# get the commit in which a file was added
+	git log --oneline file_name | tail -1
+# get the root commit where a feature branch starts
+	git merge-base <feature_branck> main
+# revert the last commit and mark all its files as staged
+	git reset --soft HEAD^
+-----------------unanswared question---------------------
+#?!?!?
+	git show
