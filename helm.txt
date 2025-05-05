@@ -1,0 +1,8 @@
+# install/update a particular helm chart
+    helm <install|upgrade> -f values.yml -n <namespace_where_to_install_chart> <revision_name> <name_of_the_helm_chart>
+# uninstall a particular helm chart
+    helm uninstall -n <namespace_where_to_install_chart> <revision_name>
+# list the default kubernetes cluster kubectl is connected to
+    kubectl config get-contexts
+# path to kubernetes cluster symlink
+    /home/test/.kube/
