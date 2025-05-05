@@ -1,0 +1,2 @@
+#recursively print all the members of an object
+	fmt.Printf("%#v\n", data)
