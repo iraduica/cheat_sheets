@@ -1,0 +1,5 @@
+#shrink virtual hard disk
+	https://superuser.com/questions/1606213/how-do-i-get-back-unused-disk-space-from-ubuntu-on-wsl2
+	https://github.com/microsoft/WSL/issues/4699
+	https://stackoverflow.com/questions/70946140/docker-desktop-wsl-ext4-vhdx-too-large
+C:\Users\<user>\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\ext4.vhdx

@@ -1,0 +1,23 @@
+# list hosts
+	ansible all -i inventory.yaml --list-hosts
+#ansible list changed configs(it depends on the PWD)
+	ansible-config dump --only-changed
+#ansible print the type of a variable
+	{{ counter | type_debug }}
+
+#msg": "ssl: HTTPSConnectionPool(host='<IP>', port=<PORT>): Max retries exceeded with url: /wsman (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1131)')))",
+	-----------------
+	possible solution
+	ansible_winrm_server_cert_validation: ignore
+	
+# "msg": "ssl: HTTPSConnectionPool(host='<IP>', port=5986): Max retries exceeded with url: /wsman (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 503 Service Unavailable')))"
+	-----------------
+	possible solution
+	unset http_proxy
+	unset sttps_proxy
+	
+#troubleshoot ansible plugins problems(debug() does not work)
+	import sys
+	sys.stdin = open('/dev/tty')
+	import pdb; pdb.set_trace()
+	
